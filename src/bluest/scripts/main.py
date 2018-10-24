@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
 
 ################################################################################
 # COPYRIGHT(c) 2018 STMicroelectronics                                         #
@@ -56,6 +56,7 @@ from blue_st_sdk.features.feature_audio_adpcm import FeatureAudioADPCM
 from blue_st_sdk.features.feature_audio_adpcm_sync import FeatureAudioADPCMSync
 import rospy
 from sensor_msgs.msg import Imu
+from madgwick_py.madgwickahrs import MadgwickAHRS
 
 # PRECONDITIONS
 #
@@ -86,7 +87,7 @@ NOTIFICATIONS = 10
 # Printing intro.
 #
 def print_intro():
-    print('\n' + INTRO + '\n')
+    rospy.loginfo('\n' + INTRO + '\n')
 
 
 # INTERFACES
@@ -104,9 +105,9 @@ class MyManagerListener(ManagerListener):
     # @param enabled True if a new discovery starts, False otherwise.
     #
     def on_discovery_change(self, manager, enabled):
-        print('Discovery %s.' % ('started' if enabled else 'stopped'))
+        rospy.loginfo('Discovery %s.' % ('started' if enabled else 'stopped'))
         if not enabled:
-            print()
+            rospy.loginfo("\n")
 
     #
     # This method is called whenever a new node is discovered.
@@ -115,7 +116,7 @@ class MyManagerListener(ManagerListener):
     # @param node    New node discovered.
     #
     def on_node_discovered(self, manager, node):
-        print('New device discovered: %s.' % (node.get_name()))
+        rospy.loginfo('New device discovered: %s.' % (node.get_name()))
 
 
 #
@@ -132,7 +133,7 @@ class MyNodeListener(NodeListener):
     # @param old_status Old node status.
     #
     def on_status_change(self, node, new_status, old_status):
-        print('Device %s went from %s to %s.' %
+        rospy.loginfo('Device %s went from %s to %s.' %
               (node.get_name(), str(old_status), str(new_status)))
 
 
@@ -151,7 +152,7 @@ class MyFeatureListener(FeatureListener):
     #
     def on_update(self, feature, sample):
         if (self.num < NOTIFICATIONS):
-            print(feature)
+            rospy.loginfo(feature)
             self.num += 1
 
 
@@ -162,8 +163,13 @@ class MyFeatureListener(FeatureListener):
 #
 def main(argv):
     rospy.init_node('sensortile', anonymous=True)
-    rate = rospy.Rate(20) # hz
-
+    pub_imu = rospy.Publisher('sensortile_imu',Imu,queue_size=10)
+    sample_freq = 100
+    sample_period = 1.0/sample_freq
+    rate = rospy.Rate(sample_freq)  # hz
+    g = 9.81645  # Pittsburgh, PA (from WolframAlpha)
+    mg = g*0.001
+    seq = 0
     # Printing intro.
     print_intro()
 
@@ -175,7 +181,7 @@ def main(argv):
 
         while True:
             # Synchronous discovery of Bluetooth devices.
-            print('Scanning Bluetooth devices...\n')
+            rospy.loginfo('Scanning Bluetooth devices...\n')
             manager.discover(False, SCANNING_TIME_s)
 
             # Getting discovered devices.
@@ -183,75 +189,97 @@ def main(argv):
 
             # Listing discovered devices.
             if not devices:
-                print('\nNo Bluetooth devices found. Try again in 5 secs...')
+                rospy.loginfo('\nNo Bluetooth devices found. Try again in 5 secs...')
                 time.sleep(5)
                 continue
-            print('\nAvailable Bluetooth devices:')
-            i = 1
+            # rospy.loginfo('\nAvailable Bluetooth devices:')
+            # i = 1
             for device in devices:
-                print('%d) %s: [%s]' % (i, device.get_name(), device.get_tag()))
-                i += 1
-
-            if (len(devices)==1):
-                device = devices[0]
-            else:
-            # Selecting a device.
-                while True:
-                    choice = int(input("\nSelect a device (\'0\' to quit): "))
-                    if choice >= 0 and choice <= len(devices):
-                        break
-                if choice == 0:
-                # Exiting.
-                    manager.remove_listener(manager_listener)
-                    print('Exiting...\n')
-                    sys.exit(0)
-                device = devices[choice - 1]
+                # rospy.loginfo('%d) %s: [%s]' % (i, device.get_name(), device.get_tag()))
+                if device.get_name() == 'AM2V100':
+                    break
+                # i += 1
+            if not device.get_name() == 'AM2V100':
+                continue
+            # if (len(devices)>1):
+            # # Selecting a device.
+            #     while True:
+            #         choice = int(input("\nSelect a device (\'0\' to quit): "))
+            #         if choice >= 0 and choice <= len(devices):
+            #             break
+            #     if choice == 0:
+            #     # Exiting.
+            #         manager.remove_listener(manager_listener)
+            #         rospy.loginfo('Exiting...\n')
+            #         sys.exit(0)
+            #     device = devices[choice - 1]
 
             # Connecting to the device.
             node_listener = MyNodeListener()
             device.add_listener(node_listener)
             while True:
-                print('\nConnecting to %s...' % (device.get_name()))
+                rospy.loginfo('\nConnecting to %s...' % (device.get_name()))
                 try:
                     device.connect()
-                    print('Connection done.')
+                    rospy.loginfo('Connection done.')
                     break
                 except BTLEException as e:
-                    print(e)
+                    rospy.loginfo(e)
                     time.sleep(1)
                     continue
             features = device.get_features()
-            mag = features[2]
-            gyro = features[3]
-            acc = features[4]
+            Mag = features[2]
+            Gyro = features[3]
+            Acc = features[4]
             mag_listener = MyFeatureListener()
             gyro_listener = MyFeatureListener()
             acc_listener = MyFeatureListener()
-            mag.add_listener(mag_listener)
-            gyro.add_listener(gyro_listener)
-            acc.add_listener(acc_listener)
-            device.enable_notifications(mag)
-            device.enable_notifications(gyro)
-            device.enable_notifications(acc)
-
+            Mag.add_listener(mag_listener)
+            Gyro.add_listener(gyro_listener)
+            Acc.add_listener(acc_listener)
+            device.enable_notifications(Mag)
+            device.enable_notifications(Gyro)
+            device.enable_notifications(Acc)
+            AHRS = MadgwickAHRS(sample_period)
             while not rospy.is_shutdown():
-                if device.wait_for_notifications(0.05):
-                    print(gyro,mag,acc)
+                if device.wait_for_notifications(sample_period):
+                    print(Gyro, Mag, Acc)
+                    gyro = [w*0.01745329252 for w in Gyro._last_sample._data]
+                    mag = Mag._last_sample._data
+                    acc = Acc._last_sample._data
+                    AHRS.update(gyro,acc,mag)
+                    q = AHRS.quaternion
+                    IMU = Imu()
+                    IMU.angular_velocity.x = gyro[0]
+                    IMU.angular_velocity.y = gyro[1]
+                    IMU.angular_velocity.z = gyro[2]
+                    IMU.linear_acceleration.x = acc[0]*mg
+                    IMU.linear_acceleration.y = acc[1]*mg
+                    IMU.linear_acceleration.z = acc[2]*mg
+                    IMU.orientation.w = q[0]
+                    IMU.orientation.x = q[1]
+                    IMU.orientation.y = q[2]
+                    IMU.orientation.z = q[3]
+                    IMU.header.stamp = rospy.Time.now()
+                    IMU.header.frame_id = "sensortile"
+                    IMU.header.seq = seq
+                    pub_imu.publish(IMU)
+                    seq += 1
                     rate.sleep()
     except rospy.ROSInterruptException:
         pass
     except BTLEException as e:
-        device.disable_notifications(mag)
-        device.disable_notifications(gyro)
-        device.disable_notifications(acc)
-        print(e)
+        device.disable_notifications(Mag)
+        device.disable_notifications(Gyro)
+        device.disable_notifications(Acc)
+        rospy.loginfo(e)
         # Exiting.
-        print('Exiting...\n')
+        rospy.loginfo('Exiting...\n')
         sys.exit(0)
     except KeyboardInterrupt:
         try:
             # Exiting.
-            print('\nExiting...\n')
+            rospy.loginfo('\nExiting...\n')
             sys.exit(0)
         except SystemExit:
             os._exit(0)
