@@ -1,2 +1,0 @@
-bluest
--DCATKIN_DEVEL_PREFIX=/home/peter/ble_ws/devel -DCMAKE_INSTALL_PREFIX=/home/peter/ble_ws/install -G Unix Makefiles
