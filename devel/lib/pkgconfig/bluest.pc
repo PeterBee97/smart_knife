@@ -1,0 +1,8 @@
+prefix=/home/peter/ble_ws/devel
+
+Name: bluest
+Description: Description of bluest
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/peter/ble_ws/devel/lib 
+Requires: 

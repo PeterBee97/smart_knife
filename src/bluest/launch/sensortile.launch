@@ -1,0 +1,7 @@
+<launch>
+
+  <!-- <node pkg="bluest" name="sensortile" type="main.py" launch-prefix="sudo -E"/> -->
+  <node pkg="bluest" name="sensortile" type="main.py"/>
+
+</launch>
+
