@@ -1,0 +1,64 @@
+<robot
+  name="knife_description">
+  <link name="base_link"/>
+  <link name="base_link_1"/>
+  <link name="base_link_2"/>
+  <link
+    name="knife_link">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.47626" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://knife/meshes/knife.stl" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://knife/meshes/knife.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint_knife_x" type="continuous">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="base_link_1"/>
+    <axis xyz="1 0 0"/>
+  </joint>
+  <joint name="joint_knife_y" type="continuous">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <parent link="base_link_1"/>
+    <child link="base_link_2"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+  <joint name="joint_knife_z" type="continuous">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <parent link="base_link_2"/>
+    <child link="knife_link"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+</robot>

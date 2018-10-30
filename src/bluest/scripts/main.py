@@ -55,8 +55,8 @@ from blue_st_sdk.feature import FeatureListener
 from blue_st_sdk.features.feature_audio_adpcm import FeatureAudioADPCM
 from blue_st_sdk.features.feature_audio_adpcm_sync import FeatureAudioADPCMSync
 import rospy
-from sensor_msgs.msg import Imu
-from madgwick_py.madgwickahrs import MadgwickAHRS
+from sensor_msgs.msg import Imu, MagneticField
+# from madgwick_py.madgwickahrs import MadgwickAHRS
 
 # PRECONDITIONS
 #
@@ -163,7 +163,8 @@ class MyFeatureListener(FeatureListener):
 #
 def main(argv):
     rospy.init_node('sensortile', anonymous=True)
-    pub_imu = rospy.Publisher('sensortile_imu',Imu,queue_size=10)
+    pub_data_raw = rospy.Publisher('imu/data_raw', Imu, queue_size=10)
+    pub_mag = rospy.Publisher('imu/mag', MagneticField, queue_size=10)
     sample_freq = 100
     sample_period = 1.0/sample_freq
     rate = rospy.Rate(sample_freq)  # hz
@@ -196,10 +197,10 @@ def main(argv):
             # i = 1
             for device in devices:
                 # rospy.loginfo('%d) %s: [%s]' % (i, device.get_name(), device.get_tag()))
-                if device.get_name() == 'AM2V100':
+                if device.get_name().find('AM')==0:
                     break
                 # i += 1
-            if not device.get_name() == 'AM2V100':
+            if not device.get_name().find('AM')==0:
                 continue
             # if (len(devices)>1):
             # # Selecting a device.
@@ -228,42 +229,55 @@ def main(argv):
                     time.sleep(1)
                     continue
             features = device.get_features()
-            Mag = features[2]
-            Gyro = features[3]
-            Acc = features[4]
-            mag_listener = MyFeatureListener()
-            gyro_listener = MyFeatureListener()
-            acc_listener = MyFeatureListener()
-            Mag.add_listener(mag_listener)
-            Gyro.add_listener(gyro_listener)
-            Acc.add_listener(acc_listener)
-            device.enable_notifications(Mag)
-            device.enable_notifications(Gyro)
-            device.enable_notifications(Acc)
-            AHRS = MadgwickAHRS(sample_period)
+            for feature in features:
+                if feature.get_name()=="Magnetometer":
+                    Mag = feature
+                    mag_listener = MyFeatureListener()
+                    Mag.add_listener(mag_listener)
+                    device.enable_notifications(Mag)
+                elif feature.get_name()=="Gyroscope":
+                    Gyro = feature
+                    gyro_listener = MyFeatureListener()
+                    Gyro.add_listener(gyro_listener)
+                    device.enable_notifications(Gyro)
+                elif feature.get_name()=="Accelerometer":
+                    Acc = feature
+                    acc_listener = MyFeatureListener()
+                    Acc.add_listener(acc_listener)
+                    device.enable_notifications(Acc)
+
+            # AHRS = MadgwickAHRS(sample_period)
             while not rospy.is_shutdown():
                 if device.wait_for_notifications(sample_period):
                     print(Gyro, Mag, Acc)
                     gyro = [w*0.01745329252 for w in Gyro._last_sample._data]
                     mag = Mag._last_sample._data
                     acc = Acc._last_sample._data
-                    AHRS.update(gyro,acc,mag)
-                    q = AHRS.quaternion
+                    # AHRS.update(gyro,acc,mag)
+                    # q = AHRS.quaternion
                     IMU = Imu()
-                    IMU.angular_velocity.x = gyro[0]
-                    IMU.angular_velocity.y = gyro[1]
+                    IMU.angular_velocity.x = -gyro[0]
+                    IMU.angular_velocity.y = -gyro[1]
                     IMU.angular_velocity.z = gyro[2]
                     IMU.linear_acceleration.x = acc[0]*mg
                     IMU.linear_acceleration.y = acc[1]*mg
-                    IMU.linear_acceleration.z = acc[2]*mg
-                    IMU.orientation.w = q[0]
-                    IMU.orientation.x = q[1]
-                    IMU.orientation.y = q[2]
-                    IMU.orientation.z = q[3]
+                    IMU.linear_acceleration.z = -acc[2]*mg
+                    # IMU.orientation.w = q[0]
+                    # IMU.orientation.x = q[1]
+                    # IMU.orientation.y = q[2]
+                    # IMU.orientation.z = q[3]
                     IMU.header.stamp = rospy.Time.now()
-                    IMU.header.frame_id = "sensortile"
+                    IMU.header.frame_id = "sensortile_imu"
                     IMU.header.seq = seq
-                    pub_imu.publish(IMU)
+                    pub_data_raw.publish(IMU)
+                    MAG = MagneticField()
+                    MAG.magnetic_field.x = mag[0]
+                    MAG.magnetic_field.y = mag[1]
+                    MAG.magnetic_field.z = mag[2]
+                    MAG.header.stamp = rospy.Time.now()
+                    MAG.header.frame_id = "sensortile_mag"
+                    MAG.header.seq = seq
+                    pub_mag.publish(MAG)
                     seq += 1
                     rate.sleep()
     except rospy.ROSInterruptException:

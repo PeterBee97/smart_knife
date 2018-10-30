@@ -1,0 +1,8 @@
+prefix=/home/peter/ble_ws/devel
+
+Name: rviz_imu_plugin
+Description: Description of rviz_imu_plugin
+Version: 1.2.0
+Cflags: 
+Libs: -L/home/peter/ble_ws/devel/lib 
+Requires: rviz

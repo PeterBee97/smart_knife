@@ -1,0 +1,8 @@
+digraph G {
+"base_link" -> "knife_link"[label="Broadcaster: /knife_robot_state\nAverage rate: 10.204 Hz\nMost recent transform: 1540693522.538 ( 0.051 sec old)\nBuffer length: 4.900 sec\n"];
+"base_link" -> "sensortile_imu"[label="Broadcaster: /sensor_base_tf\nAverage rate: 10.192 Hz\nMost recent transform: 1540693522.651 ( -0.062 sec old)\nBuffer length: 4.906 sec\n"];
+edge [style=invis];
+ subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
+"Recorded at time: 1540693522.589"[ shape=plaintext ] ;
+ }->"base_link";
+}
