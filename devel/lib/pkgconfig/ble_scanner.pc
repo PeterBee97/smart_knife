@@ -1,8 +1,0 @@
-prefix=/home/peter/ble_ws/devel
-
-Name: ble_scanner
-Description: Description of ble_scanner
-Version: 0.0.1
-Cflags: -I/home/peter/ble_ws/devel/include
-Libs: -L/home/peter/ble_ws/devel/lib 
-Requires: message_runtime roscpp rospy

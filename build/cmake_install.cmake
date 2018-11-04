@@ -121,7 +121,12 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/peter/ble_ws/build/ble_scanner/cmake_install.cmake")
+  include("/home/peter/ble_ws/build/smart_knife/imu_tools/imu_tools/cmake_install.cmake")
+  include("/home/peter/ble_ws/build/smart_knife/knife/cmake_install.cmake")
+  include("/home/peter/ble_ws/build/smart_knife/bluest/cmake_install.cmake")
+  include("/home/peter/ble_ws/build/smart_knife/imu_tools/imu_complementary_filter/cmake_install.cmake")
+  include("/home/peter/ble_ws/build/smart_knife/imu_tools/imu_filter_madgwick/cmake_install.cmake")
+  include("/home/peter/ble_ws/build/smart_knife/imu_tools/rviz_imu_plugin/cmake_install.cmake")
 
 endif()
 

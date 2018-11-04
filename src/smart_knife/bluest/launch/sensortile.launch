@@ -1,29 +1,25 @@
 <launch>
   <param name="knife_description" textfile="$(find knife)/urdf/knife.urdf" /> 
 
-  <node pkg="bluest" name="sensortile" type="blerun" args="$(find bluest)/scripts/main.py"/>
-
+  <node pkg="bluest" name="knife_main" type="blerun" args="$(find bluest)/scripts/main.py" output="screen"/>
   <node pkg="imu_complementary_filter" name="imu_fusion" type="complementary_filter_node">
     <param name="publish_debug_topics" value="true"/>
     <param name="use_mag" value="false"/>
   </node>
-  <node pkg="rviz" name="rviz" type="rviz" args="-d $(find knife)/urdf.rviz" /> 
-  <node pkg="tf" type="static_transform_publisher" name="sensor_base_tf_1" args="0 0 0 0 0 0 /kinect/user_1/right_hand /sensortile_imu 100"/> 
-  <node pkg="tf" type="static_transform_publisher" name="sensor_base_tf_2" args="0 0 0 0 0 0 /kinect/user_2/right_hand /sensortile_imu 100"/> 
-  <node pkg="tf" type="static_transform_publisher" name="sensor_base_tf_3" args="0 0 0 0 0 0 /kinect/user_3/right_hand /sensortile_imu 100"/> 
-  <node pkg="tf" type="static_transform_publisher" name="sensor_base_tf_4" args="0 0 0 0 0 0 /kinect/user_4/right_hand /sensortile_imu 100"/> 
-  <node pkg="tf" type="static_transform_publisher" name="sensor_base_tf_5" args="0 0 0 0 0 0 /kinect/user_5/right_hand /sensortile_imu 100"/> 
 <!--
-  <node pkg="joint_state_publisher" name="knife_joint_state" type="joint_state_publisher">
-    <remap from="robot_description" to="knife_description" />
-    <param name="use_gui" value="true"/>
-  </node>
+  <node pkg="tf" type="static_transform_publisher" name="sensor_base_tf_1" args="0 0 0 0 0 0 /kinect/user_1/right_hand /knife_base 100"/> 
+  <node pkg="tf" type="static_transform_publisher" name="sensor_base_tf_2" args="0 0 0 0 0 0 /kinect/user_2/right_hand /knife_base 100"/> 
+  <node pkg="tf" type="static_transform_publisher" name="sensor_base_tf_3" args="0 0 0 0 0 0 /kinect/user_3/right_hand /knife_base 100"/> 
+  <node pkg="tf" type="static_transform_publisher" name="sensor_base_tf_4" args="0 0 0 0 0 0 /kinect/user_4/right_hand /knife_base 100"/> 
+  <node pkg="tf" type="static_transform_publisher" name="sensor_base_tf_5" args="0 0 0 0 0 0 /kinect/user_5/right_hand /knife_base 100"/> 
 -->
-  <node pkg="bluest" name="rpy_translator" type="rpy_translator.py" />
-
+  <node pkg="bluest" name="knife_tf_broadcaster" type="knife_tf_broadcaster.py" output="screen" />
+<!--
   <node pkg="robot_state_publisher" name="knife_robot_state" type="robot_state_publisher">
     <remap from="robot_description" to="knife_description" />
     <remap from="joint_states" to="imu_rpy_filtered" />
   </node>
+-->
+  <node pkg="rviz" name="rviz" type="rviz" args="-d $(find knife)/urdf.rviz" /> 
 </launch>
 

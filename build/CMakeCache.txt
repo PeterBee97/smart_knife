@@ -14,12 +14,6 @@
 # EXTERNAL cache entries
 ########################
 
-//LSB Distrib tag
-ARCH:BOOL=TRUE
-
-//LSB Distrib - codename tag
-ARCH_N/A:BOOL=TRUE
-
 //Build dynamically-linked binaries
 BUILD_SHARED_LIBS:BOOL=ON
 
@@ -88,7 +82,7 @@ CATKIN_SKIP_TESTING:BOOL=OFF
 CATKIN_SYMLINK_INSTALL:BOOL=OFF
 
 //List of ';' separated packages to build
-CATKIN_WHITELIST_PACKAGES:STRING=ble_scanner
+CATKIN_WHITELIST_PACKAGES:STRING=
 
 //Path to a program.
 CMAKE_AR:FILEPATH=/usr/bin/ar
@@ -307,10 +301,10 @@ LSB_FOUND:BOOL=TRUE
 LSB_RELEASE_EXECUTABLE:FILEPATH=/usr/bin/lsb_release
 
 //LSB Distrib tag
-N/A:BOOL=TRUE
+MANJAROLINUX:BOOL=TRUE
 
 //LSB Distrib - codename tag
-N/A_N/A:BOOL=TRUE
+MANJAROLINUX_ILLYRIA:BOOL=TRUE
 
 //Path to a program.
 NOSETESTS:FILEPATH=/usr/bin/nosetests
@@ -355,16 +349,10 @@ actionlib_DIR:PATH=/opt/ros/melodic/share/actionlib/cmake
 actionlib_msgs_DIR:PATH=/opt/ros/melodic/share/actionlib_msgs/cmake
 
 //Value Computed by CMake
-ble_scanner_BINARY_DIR:STATIC=/home/peter/ble_ws/build/ble_scanner
+bluest_BINARY_DIR:STATIC=/home/peter/ble_ws/build/smart_knife/bluest
 
 //Value Computed by CMake
-ble_scanner_SOURCE_DIR:STATIC=/home/peter/ble_ws/src/ble_scanner
-
-//Value Computed by CMake
-bluest_BINARY_DIR:STATIC=/home/peter/ble_ws/build/bluest
-
-//Value Computed by CMake
-bluest_SOURCE_DIR:STATIC=/home/peter/ble_ws/src/bluest
+bluest_SOURCE_DIR:STATIC=/home/peter/ble_ws/src/smart_knife/bluest
 
 //The directory containing a CMake configuration file for bond.
 bond_DIR:PATH=/opt/ros/melodic/share/bond/cmake
@@ -374,9 +362,6 @@ bondcpp_DIR:PATH=/opt/ros/melodic/share/bondcpp/cmake
 
 //The directory containing a CMake configuration file for catkin.
 catkin_DIR:PATH=/opt/ros/melodic/share/catkin/cmake
-
-//The directory containing a CMake configuration file for catkin_simple.
-catkin_simple_DIR:PATH=catkin_simple_DIR-NOTFOUND
 
 //The directory containing a CMake configuration file for class_loader.
 class_loader_DIR:PATH=/opt/ros/melodic/share/class_loader/cmake
@@ -415,49 +400,43 @@ geometry_msgs_DIR:PATH=/opt/ros/melodic/share/geometry_msgs/cmake
 image_transport_DIR:PATH=/opt/ros/melodic/share/image_transport/cmake
 
 //Value Computed by CMake
-imu_complementary_filter_BINARY_DIR:STATIC=/home/peter/ble_ws/build/imu_tools/imu_complementary_filter
+imu_complementary_filter_BINARY_DIR:STATIC=/home/peter/ble_ws/build/smart_knife/imu_tools/imu_complementary_filter
 
 //Value Computed by CMake
-imu_complementary_filter_SOURCE_DIR:STATIC=/home/peter/ble_ws/src/imu_tools/imu_complementary_filter
+imu_complementary_filter_SOURCE_DIR:STATIC=/home/peter/ble_ws/src/smart_knife/imu_tools/imu_complementary_filter
 
 //Dependencies for the target
 imu_filter_LIB_DEPENDS:STATIC=general;/opt/ros/melodic/lib/liborocos-kdl.so;general;/opt/ros/melodic/lib/liborocos-kdl.so.1.4.0;general;/opt/ros/melodic/lib/libtf2_ros.so;general;/opt/ros/melodic/lib/libactionlib.so;general;/opt/ros/melodic/lib/libtf2.so;general;/opt/ros/melodic/lib/libnodeletlib.so;general;/opt/ros/melodic/lib/libbondcpp.so;general;/opt/ros/melodic/lib/libclass_loader.so;general;/usr/lib/libPocoFoundation.so;general;/usr/lib/libdl.so;general;/opt/ros/melodic/lib/libroslib.so;general;/opt/ros/melodic/lib/librospack.so;general;/usr/lib/libpython3.7m.so;general;/usr/lib/libboost_program_options.so;general;/usr/lib/libtinyxml2.so;general;/opt/ros/melodic/lib/libmessage_filters.so;general;/opt/ros/melodic/lib/libroscpp.so;general;/usr/lib/libpthread.so;general;/usr/lib/libboost_filesystem.so;general;/usr/lib/libboost_signals.so;general;/opt/ros/melodic/lib/libxmlrpcpp.so;general;/opt/ros/melodic/lib/librosconsole.so;general;/opt/ros/melodic/lib/librosconsole_log4cxx.so;general;/opt/ros/melodic/lib/librosconsole_backend_interface.so;general;/usr/lib/liblog4cxx.so;general;/usr/lib/libboost_regex.so;general;/opt/ros/melodic/lib/libdynamic_reconfigure_config_init_mutex.so;general;/opt/ros/melodic/lib/libroscpp_serialization.so;general;/opt/ros/melodic/lib/librostime.so;general;/opt/ros/melodic/lib/libcpp_common.so;general;/usr/lib/libboost_system.so;general;/usr/lib/libboost_thread.so;general;/usr/lib/libboost_chrono.so;general;/usr/lib/libboost_date_time.so;general;/usr/lib/libboost_atomic.so;general;/usr/lib/libconsole_bridge.so.0.4;general;/usr/lib/libboost_system.so;general;/usr/lib/libboost_thread.so;general;/usr/lib/libboost_signals.so;general;/usr/lib/libboost_chrono.so;general;/usr/lib/libboost_date_time.so;general;/usr/lib/libboost_atomic.so;
 
 //Value Computed by CMake
-imu_filter_madgwick_BINARY_DIR:STATIC=/home/peter/ble_ws/build/imu_tools/imu_filter_madgwick
+imu_filter_madgwick_BINARY_DIR:STATIC=/home/peter/ble_ws/build/smart_knife/imu_tools/imu_filter_madgwick
 
 //Value Computed by CMake
-imu_filter_madgwick_SOURCE_DIR:STATIC=/home/peter/ble_ws/src/imu_tools/imu_filter_madgwick
+imu_filter_madgwick_SOURCE_DIR:STATIC=/home/peter/ble_ws/src/smart_knife/imu_tools/imu_filter_madgwick
 
 //Dependencies for the target
 imu_filter_nodelet_LIB_DEPENDS:STATIC=general;imu_filter;general;/opt/ros/melodic/lib/liborocos-kdl.so;general;/opt/ros/melodic/lib/liborocos-kdl.so.1.4.0;general;/opt/ros/melodic/lib/libtf2_ros.so;general;/opt/ros/melodic/lib/libactionlib.so;general;/opt/ros/melodic/lib/libtf2.so;general;/opt/ros/melodic/lib/libnodeletlib.so;general;/opt/ros/melodic/lib/libbondcpp.so;general;/opt/ros/melodic/lib/libclass_loader.so;general;/usr/lib/libPocoFoundation.so;general;/usr/lib/libdl.so;general;/opt/ros/melodic/lib/libroslib.so;general;/opt/ros/melodic/lib/librospack.so;general;/usr/lib/libpython3.7m.so;general;/usr/lib/libboost_program_options.so;general;/usr/lib/libtinyxml2.so;general;/opt/ros/melodic/lib/libmessage_filters.so;general;/opt/ros/melodic/lib/libroscpp.so;general;/usr/lib/libpthread.so;general;/usr/lib/libboost_filesystem.so;general;/usr/lib/libboost_signals.so;general;/opt/ros/melodic/lib/libxmlrpcpp.so;general;/opt/ros/melodic/lib/librosconsole.so;general;/opt/ros/melodic/lib/librosconsole_log4cxx.so;general;/opt/ros/melodic/lib/librosconsole_backend_interface.so;general;/usr/lib/liblog4cxx.so;general;/usr/lib/libboost_regex.so;general;/opt/ros/melodic/lib/libdynamic_reconfigure_config_init_mutex.so;general;/opt/ros/melodic/lib/libroscpp_serialization.so;general;/opt/ros/melodic/lib/librostime.so;general;/opt/ros/melodic/lib/libcpp_common.so;general;/usr/lib/libboost_system.so;general;/usr/lib/libboost_thread.so;general;/usr/lib/libboost_chrono.so;general;/usr/lib/libboost_date_time.so;general;/usr/lib/libboost_atomic.so;general;/usr/lib/libconsole_bridge.so.0.4;general;/usr/lib/libboost_system.so;general;/usr/lib/libboost_thread.so;general;/usr/lib/libboost_signals.so;general;/usr/lib/libboost_chrono.so;general;/usr/lib/libboost_date_time.so;general;/usr/lib/libboost_atomic.so;
 
 //Value Computed by CMake
-imu_tools_BINARY_DIR:STATIC=/home/peter/ble_ws/build/imu_tools/imu_tools
+imu_tools_BINARY_DIR:STATIC=/home/peter/ble_ws/build/smart_knife/imu_tools/imu_tools
 
 //Value Computed by CMake
-imu_tools_SOURCE_DIR:STATIC=/home/peter/ble_ws/src/imu_tools/imu_tools
-
-//Value Computed by CMake
-ins_gamepad_interaction_BINARY_DIR:STATIC=/home/peter/ble_ws/build/ins_gamepad_interaction
-
-//Value Computed by CMake
-ins_gamepad_interaction_SOURCE_DIR:STATIC=/home/peter/ble_ws/src/ins_gamepad_interaction
+imu_tools_SOURCE_DIR:STATIC=/home/peter/ble_ws/src/smart_knife/imu_tools/imu_tools
 
 //The directory containing a CMake configuration file for interactive_markers.
 interactive_markers_DIR:PATH=/opt/ros/melodic/share/interactive_markers/cmake
 
 //Value Computed by CMake
-knife_sim_BINARY_DIR:STATIC=/home/peter/ble_ws/build/knife_sim
+knife_BINARY_DIR:STATIC=/home/peter/ble_ws/build/smart_knife/knife
 
 //Value Computed by CMake
-knife_sim_SOURCE_DIR:STATIC=/home/peter/ble_ws/src/knife_sim
+knife_SOURCE_DIR:STATIC=/home/peter/ble_ws/src/smart_knife/knife
 
 //The directory containing a CMake configuration file for laser_geometry.
 laser_geometry_DIR:PATH=/opt/ros/melodic/share/laser_geometry/cmake
 
 //Path to a library.
-lib:FILEPATH=/opt/ros/melodic/lib/libxmlrpcpp.so
+lib:FILEPATH=/opt/ros/melodic/lib/librosconsole_bridge.so
 
 //The directory containing a CMake configuration file for map_msgs.
 map_msgs_DIR:PATH=/opt/ros/melodic/share/map_msgs/cmake
@@ -504,6 +483,9 @@ rosgraph_DIR:PATH=/opt/ros/melodic/share/rosgraph/cmake
 //The directory containing a CMake configuration file for rosgraph_msgs.
 rosgraph_msgs_DIR:PATH=/opt/ros/melodic/share/rosgraph_msgs/cmake
 
+//The directory containing a CMake configuration file for roslaunch.
+roslaunch_DIR:PATH=/opt/ros/melodic/share/roslaunch/cmake
+
 //The directory containing a CMake configuration file for roslib.
 roslib_DIR:PATH=/opt/ros/melodic/share/roslib/cmake
 
@@ -520,13 +502,13 @@ rostime_DIR:PATH=/opt/ros/melodic/share/rostime/cmake
 rviz_DIR:PATH=/opt/ros/melodic/share/rviz/cmake
 
 //Value Computed by CMake
-rviz_imu_plugin_BINARY_DIR:STATIC=/home/peter/ble_ws/build/imu_tools/rviz_imu_plugin
+rviz_imu_plugin_BINARY_DIR:STATIC=/home/peter/ble_ws/build/smart_knife/imu_tools/rviz_imu_plugin
 
 //Dependencies for the target
 rviz_imu_plugin_LIB_DEPENDS:STATIC=general;Qt5::Widgets;general;/opt/ros/melodic/lib/librviz.so;general;/opt/OGRE-1.9/lib/libOgreOverlay.so;general;/opt/OGRE-1.9/lib/libOgreMain.so;general;/usr/lib/libGL.so;general;/usr/lib/libGLU.so;general;/opt/ros/melodic/lib/libimage_transport.so;general;/opt/ros/melodic/lib/libinteractive_markers.so;general;/opt/ros/melodic/lib/liblaser_geometry.so;general;/opt/ros/melodic/lib/libclass_loader.so;general;/usr/lib/libPocoFoundation.so;general;/usr/lib/libdl.so;general;/opt/ros/melodic/lib/libresource_retriever.so;general;/opt/ros/melodic/lib/libroslib.so;general;/opt/ros/melodic/lib/librospack.so;general;/usr/lib/libpython3.7m.so;general;/usr/lib/libboost_program_options.so;general;/opt/ros/melodic/lib/libtf.so;general;/opt/ros/melodic/lib/libtf2_ros.so;general;/opt/ros/melodic/lib/libactionlib.so;general;/opt/ros/melodic/lib/libmessage_filters.so;general;/opt/ros/melodic/lib/libtf2.so;general;/opt/ros/melodic/lib/liburdf.so;general;/usr/lib/liburdfdom_sensor.so;general;/usr/lib/liburdfdom_model_state.so;general;/usr/lib/liburdfdom_model.so;general;/usr/lib/liburdfdom_world.so;general;/usr/lib/libtinyxml.so;general;/usr/lib/libtinyxml2.so;general;/opt/ros/melodic/lib/librosconsole_bridge.so;general;/opt/ros/melodic/lib/libroscpp.so;general;/usr/lib/libpthread.so;general;/usr/lib/libboost_filesystem.so;general;/usr/lib/libboost_signals.so;general;/opt/ros/melodic/lib/librosconsole.so;general;/opt/ros/melodic/lib/librosconsole_log4cxx.so;general;/opt/ros/melodic/lib/librosconsole_backend_interface.so;general;/usr/lib/liblog4cxx.so;general;/usr/lib/libboost_regex.so;general;/opt/ros/melodic/lib/libxmlrpcpp.so;general;/opt/ros/melodic/lib/libroscpp_serialization.so;general;/opt/ros/melodic/lib/librostime.so;general;/opt/ros/melodic/lib/libcpp_common.so;general;/usr/lib/libboost_system.so;general;/usr/lib/libboost_thread.so;general;/usr/lib/libboost_chrono.so;general;/usr/lib/libboost_date_time.so;general;/usr/lib/libboost_atomic.so;general;/usr/lib/libconsole_bridge.so.0.4;
 
 //Value Computed by CMake
-rviz_imu_plugin_SOURCE_DIR:STATIC=/home/peter/ble_ws/src/imu_tools/rviz_imu_plugin
+rviz_imu_plugin_SOURCE_DIR:STATIC=/home/peter/ble_ws/src/smart_knife/imu_tools/rviz_imu_plugin
 
 //The directory containing a CMake configuration file for sensor_msgs.
 sensor_msgs_DIR:PATH=/opt/ros/melodic/share/sensor_msgs/cmake
@@ -710,7 +692,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=2
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=7
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
@@ -754,7 +736,7 @@ CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
 //Details about finding PY_em
 FIND_PACKAGE_MESSAGE_DETAILS_PY_em:INTERNAL=[/usr/lib/python2.7/site-packages/em.pyc][v()]
 //Details about finding PythonInterp
-FIND_PACKAGE_MESSAGE_DETAILS_PythonInterp:INTERNAL=[/usr/bin/python2][v2.7.15(2)]
+FIND_PACKAGE_MESSAGE_DETAILS_PythonInterp:INTERNAL=[/usr/bin/python2][v2.7.15()]
 //Details about finding Threads
 FIND_PACKAGE_MESSAGE_DETAILS_Threads:INTERNAL=[TRUE][v()]
 GTEST_BOTH_LIBRARIES:INTERNAL=/usr/lib/libgtest.so;/usr/lib/libgtest_main.so

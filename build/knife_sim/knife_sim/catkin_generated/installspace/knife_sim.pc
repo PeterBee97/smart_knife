@@ -1,8 +1,0 @@
-prefix=/home/peter/ble_ws/install
-
-Name: knife_sim
-Description: Description of knife_sim
-Version: 0.0.0
-Cflags: 
-Libs: -L/home/peter/ble_ws/install/lib 
-Requires: 

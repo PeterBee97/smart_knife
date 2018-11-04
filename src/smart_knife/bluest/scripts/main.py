@@ -55,9 +55,9 @@ from blue_st_sdk.feature import FeatureListener
 from blue_st_sdk.features.feature_audio_adpcm import FeatureAudioADPCM
 from blue_st_sdk.features.feature_audio_adpcm_sync import FeatureAudioADPCMSync
 import rospy
-from sensor_msgs.msg import Imu, JointState
+from sensor_msgs.msg import Imu, MagneticField
 import math
-from visualization_msgs.msg import Marker
+#from visualization_msgs.msg import Marker
 
 #from tf.transformations import euler_from_quaternion
 
@@ -167,11 +167,11 @@ class MyFeatureListener(FeatureListener):
 # Main application.
 #
 def main(argv):
-    rospy.init_node('sensortile', anonymous=True)
+    rospy.init_node('knife_main', anonymous=True)
     pub_data_raw = rospy.Publisher('imu/data_raw', Imu, queue_size=1)
-    pub_rpy = rospy.Publisher('/imu_rpy_filtered', JointState, queue_size=1);
-    pub_marker = rospy.Publisher('/pose_visualizer',Marker,queue_size=1);
-    # pub_mag = rospy.Publisher('imu/mag', MagneticField, queue_size=10)
+    # pub_rpy = rospy.Publisher('/imu_rpy_filtered', JointState, queue_size=1);
+    # pub_marker = rospy.Publisher('/pose_visualizer',Marker,queue_size=1);
+    pub_mag = rospy.Publisher('imu/mag', MagneticField, queue_size=10)
     sample_freq = 100
     sample_period = 1.0/sample_freq
     rate = rospy.Rate(sample_freq)  # hz
@@ -256,10 +256,10 @@ def main(argv):
             # AHRS = MadgwickAHRS(sample_period)
             while not rospy.is_shutdown():
                 if device.wait_for_notifications(sample_period):
-                    print(Gyro, Mag, Acc)
+                    # print(Gyro, Mag, Acc)
                     gyro = [w*0.01745329252 for w in Gyro._last_sample._data]
-                    # mag = Mag._last_sample._data
-                    q = Mag._last_sample._data
+                    mag = Mag._last_sample._data
+                    # q = Mag._last_sample._data
                     acc = Acc._last_sample._data
                     # AHRS.update(gyro,acc,mag)
                     # q = AHRS.quaternion
@@ -271,59 +271,59 @@ def main(argv):
                     IMU.linear_acceleration.y = acc[1]*mg
                     IMU.linear_acceleration.z = -acc[2]*mg
 
-                    IMU.orientation.x = q[0]/10000.0
-                    IMU.orientation.y = q[1]/10000.0
-                    IMU.orientation.z = q[2]/10000.0
-                    t = 100000000 - (q[0]*q[0]+q[1]*q[1]+q[2]*q[2])
-                    if t > 0:
-                        IMU.orientation.w = math.sqrt(t)/10000
-                    else:
-                        IMU.orientation.w = 0
+                    # IMU.orientation.x = q[0]/10000.0
+                    # IMU.orientation.y = q[1]/10000.0
+                    # IMU.orientation.z = q[2]/10000.0
+                    # t = 100000000 - (q[0]*q[0]+q[1]*q[1]+q[2]*q[2])
+                    # if t > 0:
+                    #     IMU.orientation.w = math.sqrt(t)/10000
+                    # else:
+                    #     IMU.orientation.w = 0
                     IMU.header.stamp = rospy.Time.now()
-                    IMU.header.frame_id = "sensortile_imu"
+                    IMU.header.frame_id = "knife_base"
                     IMU.header.seq = seq
                     pub_data_raw.publish(IMU)
-                    JS = JointState()
-                    marker = Marker()
-                    marker.header.frame_id = "sensortile_imu"
-                    marker.header.stamp = rospy.Time.now()
-                    marker.ns = "my_namespace"
-                    marker.id = 0
-                    marker.type = Marker.CUBE
-                    marker.action = Marker.ADD
-                    marker.pose.position.x = 1
-                    marker.pose.position.y = 1
-                    marker.pose.position.z = 1
-                    marker.pose.orientation.x = IMU.orientation.x
-                    marker.pose.orientation.y = IMU.orientation.y
-                    marker.pose.orientation.z = IMU.orientation.z
-                    marker.pose.orientation.w = IMU.orientation.w
-                    marker.scale.x = 1
-                    marker.scale.y = 0.1
-                    marker.scale.z = 0.01
-                    marker.color.a = 1.0
-                    marker.color.r = 0.0
-                    marker.color.g = 1.0
-                    marker.color.b = 0.0
-                    pub_marker.publish(marker)
+                    # JS = JointState()
+                    # marker = Marker()
+                    # marker.header.frame_id = "sensortile_imu"
+                    # marker.header.stamp = rospy.Time.now()
+                    # marker.ns = "my_namespace"
+                    # marker.id = 0
+                    # marker.type = Marker.CUBE
+                    # marker.action = Marker.ADD
+                    # marker.pose.position.x = 1
+                    # marker.pose.position.y = 1
+                    # marker.pose.position.z = 1
+                    # marker.pose.orientation.x = IMU.orientation.x
+                    # marker.pose.orientation.y = IMU.orientation.y
+                    # marker.pose.orientation.z = IMU.orientation.z
+                    # marker.pose.orientation.w = IMU.orientation.w
+                    # marker.scale.x = 1
+                    # marker.scale.y = 0.1
+                    # marker.scale.z = 0.01
+                    # marker.color.a = 1.0
+                    # marker.color.r = 0.0
+                    # marker.color.g = 1.0
+                    # marker.color.b = 0.0
+                    # pub_marker.publish(marker)
                     #roll = math.atan2(2 * IMU.orientation.y * IMU.orientation.w - 2 * IMU.orientation.x * IMU.orientation.z, 1 - 2 * IMU.orientation.y * IMU.orientation.y - 2 * IMU.orientation.z * IMU.orientation.z);
                     #pitch = math.atan2(2 * IMU.orientation.x * IMU.orientation.w + 2 * IMU.orientation.y * IMU.orientation.z, 1 - 2 * IMU.orientation.x * IMU.orientation.x - 2 * IMU.orientation.z * IMU.orientation.z);
                     #yaw = math.asin(2 * IMU.orientation.x * IMU.orientation.y + 2 * IMU.orientation.z * IMU.orientation.w);
                     # JS.position = euler_from_quaternion(IMU.orientation)
                     #JS.position = [roll, pitch, yaw]
-                    JS.name = ['joint_knife_x', 'joint_knife_y', 'joint_knife_z']
-                    JS.header = IMU.header
-                    JS.header.frame_id = "imu_joints"
-                    pub_rpy.publish(JS)
-                    rospy.loginfo(JS.position)
-                    # MAG = MagneticField()
-                    # MAG.magnetic_field.x = mag[0]
-                    # MAG.magnetic_field.y = mag[1]
-                    # MAG.magnetic_field.z = mag[2]
-                    # MAG.header.stamp = rospy.Time.now()
-                    # MAG.header.frame_id = "sensortile_mag"
-                    # MAG.header.seq = seq
-                    # pub_mag.publish(MAG)
+                    # JS.name = ['joint_knife_x', 'joint_knife_y', 'joint_knife_z']
+                    # JS.header = IMU.header
+                    # JS.header.frame_id = "imu_joints"
+                    # pub_rpy.publish(JS)
+                    # rospy.loginfo(JS.position)
+                    MAG = MagneticField()
+                    MAG.magnetic_field.x = mag[0]
+                    MAG.magnetic_field.y = mag[1]
+                    MAG.magnetic_field.z = mag[2]
+                    MAG.header.stamp = rospy.Time.now()
+                    MAG.header.frame_id = "sensortile_mag"
+                    MAG.header.seq = seq
+                    pub_mag.publish(MAG)
                     seq += 1
                     rate.sleep()
     except rospy.ROSInterruptException:

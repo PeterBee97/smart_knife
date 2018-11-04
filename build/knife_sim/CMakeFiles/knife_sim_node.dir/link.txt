@@ -1,1 +1,0 @@
-/usr/bin/c++    -rdynamic CMakeFiles/knife_sim_node.dir/src/drill_3D_orientation.cpp.o  -o /home/peter/ble_ws/devel/lib/knife_sim/knife_sim_node 

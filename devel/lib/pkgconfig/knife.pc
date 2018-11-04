@@ -1,0 +1,8 @@
+prefix=/home/peter/ble_ws/devel
+
+Name: knife
+Description: Description of knife
+Version: 1.0.0
+Cflags: 
+Libs: -L/home/peter/ble_ws/devel/lib 
+Requires: 
