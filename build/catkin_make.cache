@@ -1,2 +1,2 @@
 smart_knife/bluest:smart_knife/imu_tools/imu_complementary_filter:smart_knife/imu_tools/imu_filter_madgwick:smart_knife/imu_tools/imu_tools:smart_knife/imu_tools/rviz_imu_plugin:smart_knife/knife
--DCATKIN_DEVEL_PREFIX=/home/peter/ble_ws/devel -DCMAKE_INSTALL_PREFIX=/home/peter/ble_ws/install -G Unix Makefiles
+-DCATKIN_DEVEL_PREFIX=/home/peter/smart_knife/devel -DCMAKE_INSTALL_PREFIX=/home/peter/smart_knife/install -G Unix Makefiles

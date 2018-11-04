@@ -4,5 +4,5 @@ PROJECT_PKG_CONFIG_INCLUDE_DIRS = "".split(';') if "" != "" else []
 PROJECT_CATKIN_DEPENDS = "rviz".replace(';', ' ')
 PKG_CONFIG_LIBRARIES_WITH_PREFIX = "".split(';') if "" != "" else []
 PROJECT_NAME = "rviz_imu_plugin"
-PROJECT_SPACE_DIR = "/home/peter/ble_ws/install"
+PROJECT_SPACE_DIR = "/home/peter/smart_knife/install"
 PROJECT_VERSION = "1.2.0"

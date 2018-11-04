@@ -1,10 +1,10 @@
 file(REMOVE_RECURSE
   "CMakeFiles/imu_filter_madgwick_gencfg"
-  "/home/peter/ble_ws/devel/include/imu_filter_madgwick/ImuFilterMadgwickConfig.h"
-  "/home/peter/ble_ws/devel/share/imu_filter_madgwick/docs/ImuFilterMadgwickConfig.dox"
-  "/home/peter/ble_ws/devel/share/imu_filter_madgwick/docs/ImuFilterMadgwickConfig-usage.dox"
-  "/home/peter/ble_ws/devel/lib/python2.7/site-packages/imu_filter_madgwick/cfg/ImuFilterMadgwickConfig.py"
-  "/home/peter/ble_ws/devel/share/imu_filter_madgwick/docs/ImuFilterMadgwickConfig.wikidoc"
+  "/home/peter/smart_knife/devel/include/imu_filter_madgwick/ImuFilterMadgwickConfig.h"
+  "/home/peter/smart_knife/devel/share/imu_filter_madgwick/docs/ImuFilterMadgwickConfig.dox"
+  "/home/peter/smart_knife/devel/share/imu_filter_madgwick/docs/ImuFilterMadgwickConfig-usage.dox"
+  "/home/peter/smart_knife/devel/lib/python2.7/dist-packages/imu_filter_madgwick/cfg/ImuFilterMadgwickConfig.py"
+  "/home/peter/smart_knife/devel/share/imu_filter_madgwick/docs/ImuFilterMadgwickConfig.wikidoc"
 )
 
 # Per-language clean rules from dependency scanning.

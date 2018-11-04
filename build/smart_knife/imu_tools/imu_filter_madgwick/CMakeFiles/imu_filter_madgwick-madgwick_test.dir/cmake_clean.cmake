@@ -1,8 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/imu_filter_madgwick-madgwick_test.dir/test/stateless_orientation_test.cpp.o"
   "CMakeFiles/imu_filter_madgwick-madgwick_test.dir/test/madgwick_test.cpp.o"
-  "/home/peter/ble_ws/devel/lib/imu_filter_madgwick/imu_filter_madgwick-madgwick_test.pdb"
-  "/home/peter/ble_ws/devel/lib/imu_filter_madgwick/imu_filter_madgwick-madgwick_test"
+  "/home/peter/smart_knife/devel/lib/imu_filter_madgwick/imu_filter_madgwick-madgwick_test.pdb"
+  "/home/peter/smart_knife/devel/lib/imu_filter_madgwick/imu_filter_madgwick-madgwick_test"
 )
 
 # Per-language clean rules from dependency scanning.

@@ -8,5 +8,5 @@ int main (int argc, char *argv[]) {
     }
     const char *python = "python";
     argv[0] = (char*)python;
-    return execv("/usr/bin/python2", argv);
+    return execv("/usr/bin/python", argv);
 }

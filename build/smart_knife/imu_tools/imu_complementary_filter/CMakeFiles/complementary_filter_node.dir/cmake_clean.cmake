@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/complementary_filter_node.dir/src/complementary_filter_node.cpp.o"
-  "/home/peter/ble_ws/devel/lib/imu_complementary_filter/complementary_filter_node.pdb"
-  "/home/peter/ble_ws/devel/lib/imu_complementary_filter/complementary_filter_node"
+  "/home/peter/smart_knife/devel/lib/imu_complementary_filter/complementary_filter_node.pdb"
+  "/home/peter/smart_knife/devel/lib/imu_complementary_filter/complementary_filter_node"
 )
 
 # Per-language clean rules from dependency scanning.

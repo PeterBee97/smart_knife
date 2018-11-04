@@ -1,8 +1,8 @@
-prefix=/home/peter/ble_ws/install
+prefix=/home/peter/smart_knife/install
 
 Name: bluest
 Description: Description of bluest
 Version: 0.0.0
 Cflags: 
-Libs: -L/home/peter/ble_ws/install/lib 
+Libs: -L/home/peter/smart_knife/install/lib 
 Requires: 

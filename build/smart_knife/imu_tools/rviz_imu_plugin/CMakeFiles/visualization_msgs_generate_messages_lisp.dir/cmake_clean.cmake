@@ -1,6 +1,5 @@
 file(REMOVE_RECURSE
-  "rviz_imu_plugin_autogen"
-  "CMakeFiles/rviz_imu_plugin_autogen.dir/AutogenOldSettings.cmake"
+  "rviz_imu_plugin_automoc.cpp"
 )
 
 # Per-language clean rules from dependency scanning.

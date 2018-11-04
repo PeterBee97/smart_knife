@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/imu_filter_node.dir/src/imu_filter_node.cpp.o"
-  "/home/peter/ble_ws/devel/lib/imu_filter_madgwick/imu_filter_node.pdb"
-  "/home/peter/ble_ws/devel/lib/imu_filter_madgwick/imu_filter_node"
+  "/home/peter/smart_knife/devel/lib/imu_filter_madgwick/imu_filter_node.pdb"
+  "/home/peter/smart_knife/devel/lib/imu_filter_madgwick/imu_filter_node"
 )
 
 # Per-language clean rules from dependency scanning.

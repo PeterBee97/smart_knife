@@ -1,8 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/complementary_filter.dir/src/complementary_filter.cpp.o"
   "CMakeFiles/complementary_filter.dir/src/complementary_filter_ros.cpp.o"
-  "/home/peter/ble_ws/devel/lib/libcomplementary_filter.pdb"
-  "/home/peter/ble_ws/devel/lib/libcomplementary_filter.so"
+  "/home/peter/smart_knife/devel/lib/libcomplementary_filter.pdb"
+  "/home/peter/smart_knife/devel/lib/libcomplementary_filter.so"
 )
 
 # Per-language clean rules from dependency scanning.

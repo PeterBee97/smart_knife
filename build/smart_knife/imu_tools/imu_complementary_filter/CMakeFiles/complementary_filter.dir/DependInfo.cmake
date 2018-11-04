@@ -4,8 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/peter/ble_ws/src/smart_knife/imu_tools/imu_complementary_filter/src/complementary_filter.cpp" "/home/peter/ble_ws/build/smart_knife/imu_tools/imu_complementary_filter/CMakeFiles/complementary_filter.dir/src/complementary_filter.cpp.o"
-  "/home/peter/ble_ws/src/smart_knife/imu_tools/imu_complementary_filter/src/complementary_filter_ros.cpp" "/home/peter/ble_ws/build/smart_knife/imu_tools/imu_complementary_filter/CMakeFiles/complementary_filter.dir/src/complementary_filter_ros.cpp.o"
+  "/home/peter/smart_knife/src/smart_knife/imu_tools/imu_complementary_filter/src/complementary_filter.cpp" "/home/peter/smart_knife/build/smart_knife/imu_tools/imu_complementary_filter/CMakeFiles/complementary_filter.dir/src/complementary_filter.cpp.o"
+  "/home/peter/smart_knife/src/smart_knife/imu_tools/imu_complementary_filter/src/complementary_filter_ros.cpp" "/home/peter/smart_knife/build/smart_knife/imu_tools/imu_complementary_filter/CMakeFiles/complementary_filter.dir/src/complementary_filter_ros.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -18,9 +18,9 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "/home/peter/ble_ws/src/smart_knife/imu_tools/imu_complementary_filter/include"
-  "/opt/ros/melodic/include"
-  "/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp"
+  "/home/peter/smart_knife/src/smart_knife/imu_tools/imu_complementary_filter/include"
+  "/opt/ros/kinetic/include"
+  "/opt/ros/kinetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp"
   )
 
 # Targets to which this target links.

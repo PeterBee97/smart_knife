@@ -1,8 +1,8 @@
-# Install script for directory: /home/peter/ble_ws/src/smart_knife/imu_tools/imu_tools
+# Install script for directory: /home/peter/smart_knife/src/smart_knife/imu_tools/imu_tools
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/peter/ble_ws/install")
+  set(CMAKE_INSTALL_PREFIX "/home/peter/smart_knife/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -29,15 +29,10 @@ endif()
 
 # Install shared libraries without execute permission?
 if(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
-  set(CMAKE_INSTALL_SO_NO_EXE "0")
+  set(CMAKE_INSTALL_SO_NO_EXE "1")
 endif()
 
-# Is this installation the result of a crosscompile?
-if(NOT DEFINED CMAKE_CROSSCOMPILING)
-  set(CMAKE_CROSSCOMPILING "FALSE")
-endif()
-
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/imu_tools" TYPE FILE FILES "/home/peter/ble_ws/src/smart_knife/imu_tools/imu_tools/package.xml")
+if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/imu_tools" TYPE FILE FILES "/home/peter/smart_knife/src/smart_knife/imu_tools/imu_tools/package.xml")
 endif()
 

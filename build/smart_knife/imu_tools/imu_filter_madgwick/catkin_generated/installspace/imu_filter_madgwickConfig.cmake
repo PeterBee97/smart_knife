@@ -67,14 +67,14 @@ set(imu_filter_madgwick_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("FALSE" STREQUAL "TRUE")
-  set(imu_filter_madgwick_SOURCE_PREFIX /home/peter/ble_ws/src/smart_knife/imu_tools/imu_filter_madgwick)
-  set(imu_filter_madgwick_DEVEL_PREFIX /home/peter/ble_ws/devel)
+  set(imu_filter_madgwick_SOURCE_PREFIX /home/peter/smart_knife/src/smart_knife/imu_tools/imu_filter_madgwick)
+  set(imu_filter_madgwick_DEVEL_PREFIX /home/peter/smart_knife/devel)
   set(imu_filter_madgwick_INSTALL_PREFIX "")
   set(imu_filter_madgwick_PREFIX ${imu_filter_madgwick_DEVEL_PREFIX})
 else()
   set(imu_filter_madgwick_SOURCE_PREFIX "")
   set(imu_filter_madgwick_DEVEL_PREFIX "")
-  set(imu_filter_madgwick_INSTALL_PREFIX /home/peter/ble_ws/install)
+  set(imu_filter_madgwick_INSTALL_PREFIX /home/peter/smart_knife/install)
   set(imu_filter_madgwick_PREFIX ${imu_filter_madgwick_INSTALL_PREFIX})
 endif()
 
@@ -110,13 +110,13 @@ if(NOT "include;/usr/include " STREQUAL " ")
         message(FATAL_ERROR "Project 'imu_filter_madgwick' specifies '${idir}' as an include dir, which is not found.  It does not exist in '${include}'.  ${_report}")
       endif()
     else()
-      message(FATAL_ERROR "Project 'imu_filter_madgwick' specifies '${idir}' as an include dir, which is not found.  It does neither exist as an absolute directory nor in '/home/peter/ble_ws/install/${idir}'.  ${_report}")
+      message(FATAL_ERROR "Project 'imu_filter_madgwick' specifies '${idir}' as an include dir, which is not found.  It does neither exist as an absolute directory nor in '/home/peter/smart_knife/install/${idir}'.  ${_report}")
     endif()
     _list_append_unique(imu_filter_madgwick_INCLUDE_DIRS ${include})
   endforeach()
 endif()
 
-set(libraries "imu_filter;imu_filter_nodelet;/usr/lib/libboost_system.so;/usr/lib/libboost_thread.so;/usr/lib/libboost_signals.so;/usr/lib/libboost_chrono.so;/usr/lib/libboost_date_time.so;/usr/lib/libboost_atomic.so")
+set(libraries "imu_filter;imu_filter_nodelet;/usr/lib/x86_64-linux-gnu/libboost_system.so;/usr/lib/x86_64-linux-gnu/libboost_thread.so;/usr/lib/x86_64-linux-gnu/libboost_signals.so;/usr/lib/x86_64-linux-gnu/libboost_chrono.so;/usr/lib/x86_64-linux-gnu/libboost_date_time.so;/usr/lib/x86_64-linux-gnu/libboost_atomic.so;/usr/lib/x86_64-linux-gnu/libpthread.so")
 foreach(library ${libraries})
   # keep build configuration keywords, target names and absolute libraries as-is
   if("${library}" MATCHES "^(debug|optimized|general)$")
@@ -129,7 +129,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/peter/ble_ws/install/lib;/home/peter/ble_ws/devel/lib;/opt/ros/melodic/lib)
+    foreach(path /home/peter/smart_knife/install/lib;/opt/ros/kinetic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)

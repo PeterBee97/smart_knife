@@ -4,7 +4,7 @@
   <node pkg="bluest" name="knife_main" type="blerun" args="$(find bluest)/scripts/main.py" output="screen"/>
   <node pkg="imu_complementary_filter" name="imu_fusion" type="complementary_filter_node">
     <param name="publish_debug_topics" value="true"/>
-    <param name="use_mag" value="false"/>
+    <param name="use_mag" value="true"/>
   </node>
 <!--
   <node pkg="tf" type="static_transform_publisher" name="sensor_base_tf_1" args="0 0 0 0 0 0 /kinect/user_1/right_hand /knife_base 100"/> 

@@ -1,8 +1,8 @@
-# Install script for directory: /home/peter/ble_ws/src/smart_knife/knife
+# Install script for directory: /home/peter/smart_knife/src/smart_knife/knife
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/peter/ble_ws/install")
+  set(CMAKE_INSTALL_PREFIX "/home/peter/smart_knife/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -29,42 +29,37 @@ endif()
 
 # Install shared libraries without execute permission?
 if(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
-  set(CMAKE_INSTALL_SO_NO_EXE "0")
+  set(CMAKE_INSTALL_SO_NO_EXE "1")
 endif()
 
-# Is this installation the result of a crosscompile?
-if(NOT DEFINED CMAKE_CROSSCOMPILING)
-  set(CMAKE_CROSSCOMPILING "FALSE")
+if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/peter/smart_knife/build/smart_knife/knife/catkin_generated/installspace/knife.pc")
 endif()
 
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/peter/ble_ws/build/smart_knife/knife/catkin_generated/installspace/knife.pc")
-endif()
-
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/knife/cmake" TYPE FILE FILES
-    "/home/peter/ble_ws/build/smart_knife/knife/catkin_generated/installspace/knifeConfig.cmake"
-    "/home/peter/ble_ws/build/smart_knife/knife/catkin_generated/installspace/knifeConfig-version.cmake"
+    "/home/peter/smart_knife/build/smart_knife/knife/catkin_generated/installspace/knifeConfig.cmake"
+    "/home/peter/smart_knife/build/smart_knife/knife/catkin_generated/installspace/knifeConfig-version.cmake"
     )
 endif()
 
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/knife" TYPE FILE FILES "/home/peter/ble_ws/src/smart_knife/knife/package.xml")
+if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/knife" TYPE FILE FILES "/home/peter/smart_knife/src/smart_knife/knife/package.xml")
 endif()
 
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/knife/config" TYPE DIRECTORY FILES "/home/peter/ble_ws/src/smart_knife/knife/config/")
+if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/knife/config" TYPE DIRECTORY FILES "/home/peter/smart_knife/src/smart_knife/knife/config/")
 endif()
 
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/knife/launch" TYPE DIRECTORY FILES "/home/peter/ble_ws/src/smart_knife/knife/launch/")
+if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/knife/launch" TYPE DIRECTORY FILES "/home/peter/smart_knife/src/smart_knife/knife/launch/")
 endif()
 
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/knife/meshes" TYPE DIRECTORY FILES "/home/peter/ble_ws/src/smart_knife/knife/meshes/")
+if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/knife/meshes" TYPE DIRECTORY FILES "/home/peter/smart_knife/src/smart_knife/knife/meshes/")
 endif()
 
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/knife/urdf" TYPE DIRECTORY FILES "/home/peter/ble_ws/src/smart_knife/knife/urdf/")
+if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/knife/urdf" TYPE DIRECTORY FILES "/home/peter/smart_knife/src/smart_knife/knife/urdf/")
 endif()
 

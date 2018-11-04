@@ -4,11 +4,11 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/peter/ble_ws/build/smart_knife/imu_tools/rviz_imu_plugin/rviz_imu_plugin_autogen/mocs_compilation.cpp" "/home/peter/ble_ws/build/smart_knife/imu_tools/rviz_imu_plugin/CMakeFiles/rviz_imu_plugin.dir/rviz_imu_plugin_autogen/mocs_compilation.cpp.o"
-  "/home/peter/ble_ws/src/smart_knife/imu_tools/rviz_imu_plugin/src/imu_acc_visual.cpp" "/home/peter/ble_ws/build/smart_knife/imu_tools/rviz_imu_plugin/CMakeFiles/rviz_imu_plugin.dir/src/imu_acc_visual.cpp.o"
-  "/home/peter/ble_ws/src/smart_knife/imu_tools/rviz_imu_plugin/src/imu_axes_visual.cpp" "/home/peter/ble_ws/build/smart_knife/imu_tools/rviz_imu_plugin/CMakeFiles/rviz_imu_plugin.dir/src/imu_axes_visual.cpp.o"
-  "/home/peter/ble_ws/src/smart_knife/imu_tools/rviz_imu_plugin/src/imu_display.cpp" "/home/peter/ble_ws/build/smart_knife/imu_tools/rviz_imu_plugin/CMakeFiles/rviz_imu_plugin.dir/src/imu_display.cpp.o"
-  "/home/peter/ble_ws/src/smart_knife/imu_tools/rviz_imu_plugin/src/imu_orientation_visual.cpp" "/home/peter/ble_ws/build/smart_knife/imu_tools/rviz_imu_plugin/CMakeFiles/rviz_imu_plugin.dir/src/imu_orientation_visual.cpp.o"
+  "/home/peter/smart_knife/build/smart_knife/imu_tools/rviz_imu_plugin/rviz_imu_plugin_automoc.cpp" "/home/peter/smart_knife/build/smart_knife/imu_tools/rviz_imu_plugin/CMakeFiles/rviz_imu_plugin.dir/rviz_imu_plugin_automoc.cpp.o"
+  "/home/peter/smart_knife/src/smart_knife/imu_tools/rviz_imu_plugin/src/imu_acc_visual.cpp" "/home/peter/smart_knife/build/smart_knife/imu_tools/rviz_imu_plugin/CMakeFiles/rviz_imu_plugin.dir/src/imu_acc_visual.cpp.o"
+  "/home/peter/smart_knife/src/smart_knife/imu_tools/rviz_imu_plugin/src/imu_axes_visual.cpp" "/home/peter/smart_knife/build/smart_knife/imu_tools/rviz_imu_plugin/CMakeFiles/rviz_imu_plugin.dir/src/imu_axes_visual.cpp.o"
+  "/home/peter/smart_knife/src/smart_knife/imu_tools/rviz_imu_plugin/src/imu_display.cpp" "/home/peter/smart_knife/build/smart_knife/imu_tools/rviz_imu_plugin/CMakeFiles/rviz_imu_plugin.dir/src/imu_display.cpp.o"
+  "/home/peter/smart_knife/src/smart_knife/imu_tools/rviz_imu_plugin/src/imu_orientation_visual.cpp" "/home/peter/smart_knife/build/smart_knife/imu_tools/rviz_imu_plugin/CMakeFiles/rviz_imu_plugin.dir/src/imu_orientation_visual.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -26,19 +26,17 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "smart_knife/imu_tools/rviz_imu_plugin/rviz_imu_plugin_autogen/include"
-  "/home/peter/ble_ws/src/smart_knife/imu_tools/rviz_imu_plugin/include"
-  "/opt/ros/melodic/include"
-  "/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp"
+  "/home/peter/smart_knife/src/smart_knife/imu_tools/rviz_imu_plugin/include"
+  "/opt/ros/kinetic/include"
+  "/opt/ros/kinetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp"
   "/usr/include/eigen3"
-  "/opt/OGRE-1.9/include"
-  "/opt/OGRE-1.9/include/OGRE"
-  "/opt/OGRE-1.9/include/OGRE/Overlay"
-  "/usr/include/qt"
-  "/usr/include/qt/QtWidgets"
-  "/usr/include/qt/QtGui"
-  "/usr/include/qt/QtCore"
-  "/usr/lib/qt/mkspecs/linux-g++"
+  "/usr/include/OGRE/Overlay"
+  "/usr/include/OGRE"
+  "/usr/include/x86_64-linux-gnu/qt5"
+  "/usr/include/x86_64-linux-gnu/qt5/QtWidgets"
+  "/usr/include/x86_64-linux-gnu/qt5/QtGui"
+  "/usr/include/x86_64-linux-gnu/qt5/QtCore"
+  "/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64"
   )
 
 # Targets to which this target links.

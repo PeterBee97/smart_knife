@@ -1,8 +1,8 @@
-prefix=/home/peter/ble_ws/devel
+prefix=/home/peter/smart_knife/devel
 
 Name: bluest
 Description: Description of bluest
 Version: 0.0.0
 Cflags: 
-Libs: -L/home/peter/ble_ws/devel/lib 
+Libs: -L/home/peter/smart_knife/devel/lib 
 Requires: 

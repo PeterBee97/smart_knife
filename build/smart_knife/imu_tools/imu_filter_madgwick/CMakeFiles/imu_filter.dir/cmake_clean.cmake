@@ -2,8 +2,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/imu_filter.dir/src/imu_filter.cpp.o"
   "CMakeFiles/imu_filter.dir/src/imu_filter_ros.cpp.o"
   "CMakeFiles/imu_filter.dir/src/stateless_orientation.cpp.o"
-  "/home/peter/ble_ws/devel/lib/libimu_filter.pdb"
-  "/home/peter/ble_ws/devel/lib/libimu_filter.so"
+  "/home/peter/smart_knife/devel/lib/libimu_filter.pdb"
+  "/home/peter/smart_knife/devel/lib/libimu_filter.so"
 )
 
 # Per-language clean rules from dependency scanning.
